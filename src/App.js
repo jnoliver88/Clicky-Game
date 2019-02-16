@@ -20,9 +20,27 @@ function App() {
           location={friend.location}
         /> )
       })}
+      <div style={{
+        height: 50,
+        backgroundColor: "purple",
+        width: "100%",
+        padding: 20,
+        color: "white",
+        justifyContent: "center",
+        alignItems: "center",
+        display: "flex",
+        position: "fixed", top:0, left:0, right:0,
 
-
-      />
+      }}>
+      <div style={{display:"flex", flex:1, justifyContent:"center", alignItems:"center", padding:5}}>
+      <h2>Clicky Game</h2>
+      </div>
+      <div style={{display:"flex", flex:1, justifyContent:"center", alignItems:"center", padding:5}}>
+      <h2>You Guessed Correctly</h2>
+      </div>
+      
+      
+      </div>
     </Wrapper>
   );
 }
