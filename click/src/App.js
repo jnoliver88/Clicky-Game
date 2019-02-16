@@ -9,16 +9,18 @@ function App() {
     <Wrapper>
       <h1 className="title">Friends List</h1>
 
-      {this}
-      <FriendCard
-        id={friends.id}
-        key={friends.id}
-        name={friends.name}
-        image={friends.image}
-        occupation={friends.occupation}
-        location={friends.location}
-        setClick={this.setClick}
-      />
+      {friends.map(friend => {
+        return (
+        <FriendCard
+          id={friend.id}
+          key={friend.id}
+          name={friend.name}
+          image={friend.image}
+          occupation={friend.occupation}
+          location={friend.location}
+        /> )
+      })}
+
 
       />
     </Wrapper>
