@@ -4,6 +4,7 @@ import Wrapper from "./components/Wrapper";
 import friends from "./friends.json";
 import "./App.css";
 
+
 class App extends React.Component {
   state = {
     friends,
@@ -29,7 +30,7 @@ class App extends React.Component {
         score: score + 1,
         clickedId: [...prevState.clickedId, id]
       }))
-    } else if (clickedId.includeds(id)) {
+    } else if (clickedId.includes(id)) {
       let shuffledFriends = this.shuffle(friends);
       this.setState({ friends: shuffledFriends, clickedId: [], score: 0, topScore: score > topScore ? score : topScore })
     }
@@ -39,18 +40,18 @@ class App extends React.Component {
     return (
       <Wrapper>
         <h1 className="title">Friends List</h1>
-
-        {friends.map(friend => {
-          return (
+        {this.state.friends.map(friend => (
             <FriendCard
+            removeFriend={this.removeFriend}
               id={friend.id}
               key={friend.id}
               name={friend.name}
               image={friend.image}
               occupation={friend.occupation}
               location={friend.location}
-            />)
-        })}
+              setClick={this.setClick}
+            />
+        ))}
         <div style={{
           height: 50,
           backgroundColor: "purple",
@@ -69,7 +70,9 @@ class App extends React.Component {
           <div style={{ display: "flex", flex: 1, justifyContent: "center", alignItems: "center", padding: 5 }}>
             <h2>You Guessed Correctly</h2>
           </div>
-
+          <div style={{ display: "flex", flex: 1, justifyContent: "center", alignItems: "center", padding: 5, fontSize: 23, fontWeight:"700"}}>
+            Score: {this.state.score} | Top Score: {this.state.topScore}
+          </div>
 
         </div>
       </Wrapper>
